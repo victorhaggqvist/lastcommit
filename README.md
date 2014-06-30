@@ -6,7 +6,7 @@ This is [Johan Nilsson](https://github.com/johannilsson/lastcommit)'s last commi
 
 ``` html
 <span class="lastcommit-widget" data-user="your github username"></span>
-<script src="//victorhaggqvist.github.io/lastcommit/lastcommit.min.js"></script>
+<script src="//victorhaggqvist.github.io/lastcommit/dist/lastcommit.min.js"></script>
 ```
 
 * Does not work properly on commits in branches.
