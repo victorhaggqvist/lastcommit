@@ -6,9 +6,9 @@ module.exports = function (grunt) {
         pkg: grunt.file.readJSON('package.json'),
         banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
             '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-            '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
-            '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author %>;' +
-            ' Licensed <%= props.license %> */\n',
+            '<%= pkg.homepage ? " * " + pkg.homepage + "\\n" : "" %>' +
+            ' * Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author %>;' +
+            ' Licensed <%= pkg.license %> */\n',
         // Task configuration
         concat: {
             options: {
@@ -32,7 +32,7 @@ module.exports = function (grunt) {
         jshint: {
             options: {
                 node: true,
-                curly: true,
+                curly: false,
                 eqeqeq: true,
                 immed: true,
                 latedef: true,
@@ -45,7 +45,7 @@ module.exports = function (grunt) {
                 boss: true
             },
             gruntfile: {
-                src: 'gruntfile.js'
+                src: 'Gruntfile.js'
             },
             main: {
                 src: '<%= pkg.name %>.js'
@@ -70,6 +70,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     // Default task
-    grunt.registerTask('default', ['jshint', 'concat', 'uglify']);
+    grunt.registerTask('default', ['jshint:main', 'concat', 'uglify']);
 };
 
