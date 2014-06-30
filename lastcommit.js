@@ -51,7 +51,6 @@
           return Date.parse(b.pushed_at) - Date.parse(a.pushed_at);
       });
 
-      // console.log("Success: " + respData[0].pushed_at);
       getCommitFromRepo(user, respData[0], callback);
     };
     r.send();
@@ -65,7 +64,6 @@
    * @param  function callback Function to called on successfull retrival of commit
    */
   function getCommitFromRepo(user, repo, callback) {
-    // console.log(repo);
     var r = new XMLHttpRequest();
     r.open('GET', 'https://api.github.com/repos/' + user + '/' + repo.name + '/commits', true);
 
@@ -79,7 +77,6 @@
         if (a.committer.login === user) return true;
       });
 
-      // console.log("Success: " + userCommits[0].commit.message);
       callback(repo, userCommits[0]);
     };
     r.send();
