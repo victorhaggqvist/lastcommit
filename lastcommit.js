@@ -93,7 +93,7 @@
    */
   function renderWidget(element, data) {
     var url = 'https://github.com/' + data.user + '/' + data.repo.name +'/commit/' + data.commit.sha,
-        html = '<a href="' + url +'"> ' + data.commit.commit.message + '</a>';
+        html = '<a href="' + url +'">' + data.commit.commit.message + '</a>';
     element.innerHTML = html;
   }
 
