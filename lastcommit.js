@@ -1,3 +1,4 @@
+/*jshint browser:true*/
 /**
  * Widget that shows the last commit made in a users github repositories.
  *
@@ -29,17 +30,6 @@
  */
 (function(){
 
-  var element = document.getElementsByClassName('lastcommit-widget')[0];
-      user = element.getAttribute('data-user');
-
-  getLastCommit(user, function (repo, commit) {
-    renderWidget(element, {
-        user: user,
-        repo: repo,
-        commit: commit
-    });
-  });
-
   /**
    * Wrapper function for widget, gets latest commit for user
    *
@@ -48,7 +38,7 @@
    */
   function getLastCommit(user, callback) {
 
-    if (!user) { console.error('Did not find username on lastcommit widget'); return;};
+    if (!user) { console.error('Did not find username on lastcommit widget'); return;}
 
     var r = new XMLHttpRequest();
     r.open('GET', 'https://api.github.com/users/' + user + '/repos', true);
@@ -102,9 +92,20 @@
    * @param data Data to populate the widget with.
    */
   function renderWidget(element, data) {
-    url = 'https://github.com/' + data.user + '/' + data.repo.name +'/commit/' + data.commit.sha
-    var html = '<a href="' + url +'"> ' + data.commit.message + '</a>';
+    var url = 'https://github.com/' + data.user + '/' + data.repo.name +'/commit/' + data.commit.sha,
+        html = '<a href="' + url +'"> ' + data.commit.message + '</a>';
     element.innerHTML = html;
   }
+
+  var element = document.getElementsByClassName('lastcommit-widget')[0],
+      user = element.getAttribute('data-user');
+
+  getLastCommit(user, function (repo, commit) {
+    renderWidget(element, {
+        user: user,
+        repo: repo,
+        commit: commit
+    });
+  });
 
 })();
