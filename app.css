@@ -34,9 +34,3 @@ pre {
   text-align: left;
   border: 0 !important;
 }
-
-iframe {
-  display: block;
-  margin: 0 auto;
-  width: 80px;
-}
