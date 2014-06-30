@@ -80,7 +80,7 @@
       });
 
       // console.log("Success: " + userCommits[0].commit.message);
-      callback(repo, userCommits[0].commit);
+      callback(repo, userCommits[0]);
     };
     r.send();
   }
@@ -93,7 +93,7 @@
    */
   function renderWidget(element, data) {
     var url = 'https://github.com/' + data.user + '/' + data.repo.name +'/commit/' + data.commit.sha,
-        html = '<a href="' + url +'"> ' + data.commit.message + '</a>';
+        html = '<a href="' + url +'"> ' + data.commit.commit.message + '</a>';
     element.innerHTML = html;
   }
 
